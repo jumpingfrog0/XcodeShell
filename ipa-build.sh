@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#-----------------------------------
+#------------------------------------
 # Function: Automated packaging, build Xcode project or workspace, archive it and export ipa file. You can run the command `man xcodebuild` to see more.
 #
 # Usage: Copy the export options plist files and this `ipa-build.sh` script into the root path of xcode project or workspace, type in your Certificates and Profiles in line 51 - 58, and then run it.
@@ -12,10 +12,10 @@
 #
 # Create Date: 2016/06/27
 #
-#-----------------------------------
+#------------------------------------
 
-#-----------------------------------
-# Help: 
+#--------------- Help ---------------
+# Options: 
 # 	-D : Build with development certificate for debug
 # 	-T : Build with Ad-hoc certificate for testing
 # 	-P : Build with production certificate for AppStore
@@ -43,17 +43,17 @@
 # Error: 
 # 	If archive failed or export failed, you can see the log in `ipa-build.log`.
 #
-#-----------------------------------
+#------------------------------------
 
 # Type in your Certificates and Profiles here
-CODE_SIGN_IDENTITY_DEVELOPMENT="iPhone Developer: xxxx" 	# Development Certificate
-CODE_SIGN_IDENTITY_DISTRIBUTION="iPhone Distribution: xxxx" # Distirbution Certificate
+CODE_SIGN_IDENTITY_DEVELOPMENT="iPhone Developer: xxxx (xxxx)" 	# Development Certificate
+CODE_SIGN_IDENTITY_DISTRIBUTION="iPhone Distribution: XXX, Ltd. (xxxxxxxxxx)" # Distirbution Certificate
 # If you don't have company certificate, use personal certificate
-# CODE_SIGN_IDENTITY_DISTRIBUTION="iPhone Developer: xxxx"
+# CODE_SIGN_IDENTITY_DISTRIBUTION="iPhone Developer: xxxx (xxxx)"
 
-PROVISIONING_PROFILE_DEVELOP="xxx-xxx-xxx"
-PROVISIONING_PROFILE_ADHOC="xxx-xxx-xxx"
-PROVISIONING_PROFILE_PRODUCTION="xxx-xxx-xxx"
+PROVISIONING_PROFILE_DEVELOP="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+PROVISIONING_PROFILE_ADHOC="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+PROVISIONING_PROFILE_PRODUCTION="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 
 # export options plist
