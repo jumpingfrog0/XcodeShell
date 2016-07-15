@@ -6,7 +6,8 @@
 
 [中文文档](#Chinese)
 
-## <span id="English">Introduce</span>
+<a name="English"></a>
+##<span id="English"> Introduc</span>e
 
 This repository include scripts that Xcode automaticly package and upload ipa to App Store.
 
@@ -73,6 +74,7 @@ To simplify scripts, I created three option plists that configured the simplifie
 
 run the script and then terminal will ask you whether validate before upload, type in `YES` just OK.
 
+<a name="Chinese"></a>
 ## <span id="Chinese">介绍</span>
 
 这个代码仓库包含了Xcode自动化打包和上传ipa到App Store的一些脚本。
