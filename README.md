@@ -58,9 +58,10 @@ To simplify scripts, I created three option plists that configured the simplifie
 * Two directories
 	* `archive` : The folder of files archived
 	* `export`  : The folder of ipa files exported
-* Two files
+* Three files
 	* `ipa-build.log` : The log file. If archive failed or export failed, you can see the log
-	* `build_cmd.sh`  : The `xcodebuild` command script
+	* `build_cmd.sh`  : The `xcodebuild` archive command script
+	* `export_cmd.sh` : `xcodebuild` export ipa command script
 
 ### Upload
 
@@ -126,9 +127,10 @@ Xcode7 使用一些plist文件来配置导出的文件，比如支持Bitcode，a
 * 两个目录
 	* `archive` : 归档的文件夹
 	* `export`  : 存放导出的ipa的文件夹
-* 两个文件
+* 三个文件
 	* `ipa-build.log` : 日志文件。 如果归档失败或导出失败，可以查看日志。
-	* `build_cmd.sh`  : `xcodebuild`命令脚本
+	* `build_cmd.sh`  : `xcodebuild` archive命令脚本
+	* `export_cmd.sh` : `xcodebuild` 导出ipa命令脚本
 
 ### 上传
 

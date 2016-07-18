@@ -103,7 +103,8 @@ function Archive() {
 
 		build_cmd="${build_cmd} -workspace ${build_workspace} -scheme ${build_scheme} -configuration ${build_config} \
 		archive -archivePath ${archive_path} \
-		>> ${log_path}"
+		CODE_SIGN_IDENTITY=\"${CODE_SIGN_IDENTITY}\" \
+		PROVISIONING_PROFILE=\"${PROVISIONING_PROFILE}\" >> ${log_path}"
 	fi
 
 	# run command
@@ -223,6 +224,6 @@ export_path="./export/${build_scheme}-${app_version}-$(date "+%G-%m-%d.%H-%M-%S"
 Archive
 
 # remove tmp file
-$(rm build_cmd.sh)
-$(rm export_cmd.sh)
+# $(rm build_cmd.sh)
+# $(rm export_cmd.sh)
 
