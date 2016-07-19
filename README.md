@@ -9,16 +9,17 @@
 <a name="English"></a>
 ##<span id="English"> Introduc</span>e
 
-This repository include scripts that Xcode automaticly package and upload ipa to App Store.
+This repository include scripts that Xcode automaticly package, upload ipa to `AppStore` and publish application on `fir.im`.
 
-These scripts is based on `xcodebuild`, `xcodebuild` is a script Apple build Xcode projects and workspaces. You can archive the application, export ipa file and then upload the binary file to App Store. Run the command `man xcodebuild` to see more description.
+`ipa-build.sh` and `ipa-upload.sh` scripts are based on `xcodebuild`, `xcodebuild` is a script Apple build Xcode projects and workspaces. You can archive the application, export ipa file and then upload the binary file to App Store. Run the command `man xcodebuild` to see more description.
+
+`fir-publish.sh` script is based on `fir-cli` tool, see more [fir-cli](https://github.com/FIRHQ/fir-cli)
 
 ## Installation
 
 1. Copy all files into the root path of your Xcode project or workspace
-2. Type in your `Certificates` and `Profiles` in 51 - 58 lines of `ipa-build.sh`
-3. Type in your Apple Develope Account username and password in 27 - 28 lines of `ipa-upload.sh`
-4. Run scripts
+2. Type in some configuration in the scirpts, such as your `Certificates` and `Profiles`, your Apple Develope Account username and password, the API Token of `fir.im`, see detail in anyone script.
+3. Run scripts
 
 ## Usage
 
@@ -75,19 +76,26 @@ To simplify scripts, I created three option plists that configured the simplifie
 
 run the script and then terminal will ask you whether validate before upload, type in `YES` just OK.
 
+### Publish on Fir.im
+
+Get API Token from [http://fir.im/apps/apitoken]("http://fir.im/apps/apitoken"), type in the token in line 21, and then run script.
+
+	./fir-publish.sh
+
 <a name="Chinese"></a>
 ## <span id="Chinese">介绍</span>
 
-这个代码仓库包含了Xcode自动化打包和上传ipa到App Store的一些脚本。
+这个代码仓库包含了Xcode自动化打包、上传ipa到`AppStore`、发布应用到`Fir.im`的一些脚本。
 	
-这些脚本是基于`xcodebuild`编写的，`xcodebuild`是苹果的Xcode项目工程和工作空间的构建脚本。你可以使用它来打包App，导出ipa文件和上传二进制文件到App Store。运行命令`man xcodebuild`查看更多帮助。
+`ipa-build.sh`和`ipa-upload.sh`这两个脚本是基于`xcodebuild`编写的，`xcodebuild`是苹果的Xcode项目工程和工作空间的构建脚本。你可以使用它来打包App，导出ipa文件和上传二进制文件到App Store。运行命令`man xcodebuild`查看更多帮助。
+
+`fir-publish.sh`脚本是基于`fir-cli`工具编写的，详见 [fir-cli](https://github.com/FIRHQ/fir-cli)。
 
 ## 安装
 
 1. 复制所有文件到你Xcode项目工程或工作空间的跟路径
-2. 在`ipa-build.sh`的第51-58行输入证书和配置文件
-3. 在`ipa-upload.sh`的第27-28行输入苹果开发者账号的用户名和密码
-4. 运行脚本
+2. 在脚本中输入一些配置信息，比如证书和配置文件、苹果开发者账号的用户名和密码、`Fir.im`的API Token，在每个脚本中查看更详细的信息。
+3. 运行脚本
 
 ## 用法
 
@@ -143,3 +151,9 @@ Xcode7 使用一些plist文件来配置导出的文件，比如支持Bitcode，a
 #### 上传之前校验
 
 运行脚本之后，终端会询问你是否要在上传之前进行校验，输入YES即可。
+
+### 发布到Fir.im
+
+从 [http://fir.im/apps/apitoken]("http://fir.im/apps/apitoken") 获取API Token, 在第21行输入token, 然后运行脚本。
+
+	./fir-publish.sh
