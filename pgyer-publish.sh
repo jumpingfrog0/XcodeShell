@@ -1,11 +1,11 @@
 #!/bin/bash
 
 #------------------------------------
-# Function: Publish Application to fir.im
+# Function: Publish Application to pgyer.
 #
-# Usage: Run command `gem install fir-cli` to install `fir-cli` tool first, copy this `fir-publish.sh` script into the root path of xcode project or workspace, type in The API Token of `fir.im`, and then run this script after `ipa-build.sh` script.
+# Usage: Run command `brew install jq` to install `jq` first, copy this `fir-publish.sh` script into the root path of xcode project or workspace, type in the user key and api key of `pyger`, and then run this script after `ipa-build.sh` script.
 #
-# See more : https://github.com/FIRHQ/fir-cli
+# See more : https://www.pgyer.com/doc/view/upload_one_command
 #  
 # Author: jumpingfrog0 ( 黄东鸿 ）
 # Email:  jumpingfrog0@gmail.com
@@ -16,9 +16,10 @@
 #------------------------------------
 
 
-# Type in API Token here
-# Get API Token from "http://fir.im/apps/apitoken"
-API_TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+# Type in user key and api key here
+# Get user key and api key seeing "https://www.pgyer.com/doc/view/upload_one_command"
+user_key="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+api_key="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 # Check the ipa file whether exists
 function CheckIpaExist() {
@@ -48,18 +49,22 @@ function CheckIpaExist() {
 	fi
 }
 
-echo 'Login Fir.im ...'
-fir login ${API_TOKEN}
+CheckIpaExist
 
-if [ $? == 0 ]; then
+cmd="curl -F \"file=@${ipa_file}\" \
+-F \"uKey=${user_key}\" \
+-F \"_api_key=${api_key}\" \
+https://www.pgyer.com/apiv1/app/upload"
 
-	CheckIpaExist
+echo ${cmd}
+echo 'Publishing to pgyer ...'
+eval $cmd > pgyer.log
 
-	echo "fir publish ${ipa_file} -Q --no-open"
+echo $(cat pgyer.log)
+result=$(cat pgyer.log | jq '.code')
 
-	fir publish ${ipa_file} -Q --no-open
-
+if [ $result == 0 ]; then
+	echo -e "\n ** PUBLISH TO PGYER SUCCEEDED **"
 else
-	echo 'Log in Fir.im failed.'
+	echo -e "\n ** PUBLISH TO PGYER FAILED ** "
 fi
-
