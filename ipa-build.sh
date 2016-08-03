@@ -19,6 +19,7 @@
 # 	-D : Build with development certificate for debug
 # 	-T : Build with Ad-hoc certificate for testing
 # 	-P : Build with production certificate for AppStore
+#   -E : Build with enterprise certificate for in-house
 # 	-w : Build xcode workspace
 # 	-c : Build xcode project
 # 	-n : Cleans the build directory before compling
@@ -29,6 +30,7 @@
 #	DevExportOptions.plist : The plist file that configures archive exporting for development
 #	AdHocExportOptions.plist : The plist file that configures archive exporting for Ad-hoc
 #	AppStoreExportOptions.plist : The plist file that configures archive exporting for App Store
+#	EnterpriseExportOptions.plist : The plist file that configures archive exporting for In-house
 #
 # Output:
 # 	archive : The path of files archived
@@ -54,12 +56,14 @@ CODE_SIGN_IDENTITY_DISTRIBUTION="iPhone Distribution: XXX, Ltd. (xxxxxxxxxx)" # 
 PROVISIONING_PROFILE_DEVELOP="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 PROVISIONING_PROFILE_ADHOC="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 PROVISIONING_PROFILE_PRODUCTION="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+PROVISIONING_PROFILE_ENTERPRISE="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 
 # export options plist
 DEV_EXPORT_OPTIONS="./DevExportOptions.plist"
 ADHOC_EXPORT_OPTIONS="./AdHocExportOptions.plist"
 APPSTORE_EXPORT_OPTIONS="./AppStoreExportOptions.plist"
+ENTERPRISE_EXPORT_OPTIONS="./EnterpriseExportOptions.plist"
 
 
 # build configuration
@@ -162,7 +166,7 @@ if [ $# -lt 2 ]; then
 	exit 2
 fi
 
-param_pattern="DTPwnco:"
+param_pattern="DTPEwnco:"
 while getopts $param_pattern optname
 	do
 		case "$optname" in
@@ -180,6 +184,11 @@ while getopts $param_pattern optname
 				CODE_SIGN_IDENTITY=${CODE_SIGN_IDENTITY_DISTRIBUTION}
 				PROVISIONING_PROFILE=${PROVISIONING_PROFILE_PRODUCTION}
 				export_options=${APPSTORE_EXPORT_OPTIONS}
+				;;
+			"E")
+				CODE_SIGN_IDENTITY=${CODE_SIGN_IDENTITY_DISTRIBUTION}
+				PROVISIONING_PROFILE=${PROVISIONING_PROFILE_ENTERPRISE}
+				export_options=${ENTERPRISE_EXPORT_OPTIONS}
 				;;
 			"w")
 				is_workspace=0
@@ -201,7 +210,7 @@ while getopts $param_pattern optname
 				should_clean='y'
 				;;
 			?)
-				echo "Error! Unknown option.Usage: args [-D | -T | -P ][-w | -c | -n | -o PATH]"
+				echo "Error! Unknown option.Usage: args [-D | -T | -P -E][-w | -c | -n | -o PATH]"
 				exit 2
 				;;
 			":")
