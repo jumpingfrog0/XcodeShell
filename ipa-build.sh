@@ -145,7 +145,7 @@ function Export() {
 
 	#run command
 	echo $export_cmd
-	echo $export_cmd >> export_cmd.sh
+	echo $export_cmd > export_cmd.sh
 	echo "===================== `Date` EXPORT BEGIN =====================" >> ${log_path}
 	echo "Exporting ..."
 	# $(${export_cmd})
