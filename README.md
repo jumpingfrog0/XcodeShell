@@ -30,11 +30,11 @@ This repository include scripts that Xcode automaticly package, upload ipa to `A
 
 #### build Xcode project
 
-	./ipa-build.sh -c [-D | -T | -P]
+	./ipa-build.sh -c [-D | -T | -P | -E]
 
 #### build Xcode workspace
 
-	./ipa-build.sh -w [-D | -T | -P]
+	./ipa-build.sh -w [-D | -T | -P | -E]
 
 #### Options
 
@@ -43,6 +43,7 @@ This repository include scripts that Xcode automaticly package, upload ipa to `A
  	-D : Build with development certificate for debugging
  	-T : Build with Ad-hoc certificate for testing
  	-P : Build with production certificate for AppStore
+ 	-E : Build with enterprise certificate for Enterprise(In-house)
  	-w : Build xcode workspace
  	-c : Build xcode project
  	-n : Cleans the build directory before compling
@@ -56,6 +57,7 @@ To simplify scripts, I created three option plists that configured the simplifie
 * `DevExportOptions.plist` : configures archive exporting for development
 * `AdHocExportOptions.plist` : configures archive exporting for Ad-Hoc
 * `AppStoreExportOptions.plist` : configures archive exporting for App Store
+* `EnterpriseExportOptions.plist` : configures archive exporting for Enterprise(In-house)
 
 #### Output
 
@@ -126,11 +128,11 @@ Get user key and api key seeing [https://www.pgyer.com/doc/view/upload_one_comma
 
 #### 构建Xcode项目
 
-	./ipa-build.sh -c [-D | -T | -P]
+	./ipa-build.sh -c [-D | -T | -P | -E]
 
 #### 构建Xcode工作空间
 
-	./ipa-build.sh -w [-D | -T | -P]
+	./ipa-build.sh -w [-D | -T | -P | -E]
 
 #### 选项
 
@@ -139,6 +141,7 @@ Get user key and api key seeing [https://www.pgyer.com/doc/view/upload_one_comma
  	-D : 用调试证书构建，用于调试
  	-T : 用Ad-hoc证书构建，用于内测
  	-P : 用产品证书构建，用于App Store
+ 	-E : 用企业证书构建，用于企业内部(In-house)
  	-w : 构建Xcode工作空间
  	-c : 构建Xcode项目
  	-n : 构建前清空编译文件
@@ -152,6 +155,7 @@ Xcode7 使用一些plist文件来配置导出的文件，比如支持Bitcode，a
 * `DevExportOptions.plist` : 配置导出的文件用于调试
 * `AdHocExportOptions.plist` : 配置导出的文件用于Ad-Hoc
 * `AppStoreExportOptions.plist` : 配置导出的文件用于App Store
+* `EnterpriseExportOptions.plist` : 配置导出的文件用于企业内部(In-house)
 
 #### 输出
 
